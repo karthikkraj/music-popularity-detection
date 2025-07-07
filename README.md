@@ -1,10 +1,3 @@
-Thanks for uploading the notebook: `Music_Popularity_Detection.ipynb`.
-
-I’ve reviewed the entire notebook, and here’s a **professional `README.md` file** tailored for your project:
-
----
-
-````markdown
 # 🎵 Music Popularity Detection using Regression
 
 This project aims to **predict the popularity of songs** based on their acoustic and musical features using various regression techniques. By modeling the relationship between song characteristics and their popularity scores, we help music producers, artists, and marketers make **data-driven decisions**.
