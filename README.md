@@ -179,6 +179,6 @@ To enhance the predictive power and practical applicability:
 
 ## 🪪 License
 
-Distributed under the **MIT License**. See [`LICENSE.md`](./LICENSE.md) for full terms.
+Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for full terms.
 
 ---
