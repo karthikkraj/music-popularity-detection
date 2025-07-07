@@ -90,18 +90,18 @@ The following regression models were implemented, trained, and tuned:
 
 Models were benchmarked using the following metrics:
 
-\[
-\text{MAE} = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|
-\]
-\[
-\text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
-\]
-\[
-\text{RMSE} = \sqrt{\text{MSE}}
-\]
-\[
-R^2 = 1 - \frac{\sum (y_i - \hat{y}_i)^2}{\sum (y_i - \bar{y})^2}
-\]
+**Mean Absolute Error (MAE)**  
+MAE = (1/n) * Σ | yᵢ - ŷᵢ |
+
+**Mean Squared Error (MSE)**  
+MSE = (1/n) * Σ (yᵢ - ŷᵢ)²
+
+**Root Mean Squared Error (RMSE)**  
+RMSE = √MSE
+
+**Coefficient of Determination (R²)**  
+R² = 1 - [ Σ(yᵢ - ŷᵢ)² / Σ(yᵢ - ȳ)² ]
+
 
 These metrics were used to assess the predictive accuracy and generalization performance of each model.
 
