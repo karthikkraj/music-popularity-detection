@@ -136,7 +136,7 @@ Visualizations included in the project:
 ### 🔗 GitHub
 
 ```bash
-git clone https://github.com/<your-username>/music-popularity-prediction.git
+git clone https://github.com/karthikkraj/music-popularity-prediction.git
 cd music-popularity-prediction
 
 ### 📦 Dependencies
