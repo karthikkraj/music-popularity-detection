@@ -1,77 +1,94 @@
-# 🎵 Music Popularity Detection using Regression
+---
 
-This project aims to **predict the popularity of songs** based on their acoustic and musical features using various regression techniques. By modeling the relationship between song characteristics and their popularity scores, we help music producers, artists, and marketers make **data-driven decisions**.
+# 🎵 Music Popularity Prediction via Regression Modeling
+
+This project explores the construction and evaluation of regression-based machine learning models to predict the **popularity of music tracks** using a diverse set of acoustic and musical features. The goal is to build a predictive system that enables **music industry stakeholders**—including producers, distributors, and marketing teams—to make informed, data-driven decisions regarding song performance.
 
 ---
 
-## 📌 Objective
+## 🎯 Objective
 
-To develop a regression-based machine learning model that can predict the popularity of a song using its musical attributes such as:
+To develop and assess a suite of supervised regression algorithms capable of estimating a track’s **popularity score**—defined on a continuous scale from 0 to 100—based solely on measurable musical attributes.
 
-- Acousticness
-- Danceability
-- Energy
-- Instrumentalness
-- Liveness
-- Speechiness
-- Tempo
-- Valence
-- Loudness
-- Duration
-- Key
-- Mode
-- Time Signature
+### Feature Set:
 
----
+- `acousticness`
+- `danceability`
+- `energy`
+- `instrumentalness`
+- `liveness`
+- `speechiness`
+- `tempo`
+- `valence`
+- `loudness`
+- `duration_ms`
+- `key` (categorical)
+- `mode` (categorical)
+- `time_signature` (categorical)
 
-## 📁 Dataset
+The primary research question is:
 
-The dataset contains **227 songs**, each described by:
-
-- **Musical Features** (float values like `acousticness`, `energy`, etc.)
-- **Metadata** (`key`, `mode`, `time_signature`)
-- **Target Variable**: `popularity` (numeric value ranging from 0 to 100)
+> *Can musical and acoustic features reliably predict the commercial success of a song using regression models?*
 
 ---
 
-## 🧪 Methodology
+## 📊 Dataset Overview
 
-1. **Data Cleaning & Preprocessing**
-   - Handled missing/null values
-   - Removed outliers
-   - Feature scaling using StandardScaler
-   - Encoded categorical variables (`key`, `mode`, `time_signature`)
+The dataset comprises **227 songs**, each annotated with:
 
-2. **Exploratory Data Analysis (EDA)**
-   - Visualizations to examine correlation and distribution
-   - Correlation heatmap for feature importance
+- Quantitative audio features (float)
+- Categorical musical attributes
+- Target variable: **`popularity`**
 
-3. **Feature Selection**
-   - Used correlation analysis to identify key influencing features.
-   - Removed multicollinear features using VIF.
-
-4. **Model Building**
-   - Trained and compared multiple regression models:
-     - Linear Regression
-     - Ridge Regression
-     - Lasso Regression
-     - Decision Tree Regressor
-     - Random Forest Regressor
-     - Gradient Boosting Regressor
-     - XGBoost Regressor
-
-5. **Model Evaluation**
-   - Used standard regression evaluation metrics:
-     - Mean Absolute Error (MAE)
-     - Mean Squared Error (MSE)
-     - Root Mean Squared Error (RMSE)
-     - Coefficient of Determination \( R^2 \)
+The dataset was manually reviewed and preprocessed to ensure modeling integrity.
 
 ---
 
-## 🧠 Models and Results
+## 🔍 Methodological Framework
 
-Each model was evaluated using:
+### 1. 🧹 Data Preprocessing
+
+- Missing value imputation
+- Outlier detection and mitigation using IQR
+- Feature normalization using **StandardScaler**
+- One-hot encoding of categorical variables (`key`, `mode`, `time_signature`)
+
+---
+
+### 2. 📊 Exploratory Data Analysis (EDA)
+
+- Univariate and bivariate statistical plots
+- Pearson correlation matrix
+- Feature-target relationships via scatterplots and histograms
+
+---
+
+### 3. 🧠 Feature Engineering & Selection
+
+- Correlation filtering to identify highly relevant predictors
+- **Variance Inflation Factor (VIF)** analysis to remove multicollinearity
+
+---
+
+### 4. 🏗️ Model Architecture
+
+The following regression models were implemented, trained, and tuned:
+
+| Model                     | Description                           |
+|--------------------------|---------------------------------------|
+| Linear Regression        | Baseline OLS regression               |
+| Ridge Regression         | L2-regularized linear model           |
+| Lasso Regression         | L1-regularized linear model           |
+| Decision Tree Regressor  | Non-parametric tree-based model       |
+| Random Forest Regressor  | Ensemble of decision trees (bagging)  |
+| Gradient Boosting        | Ensemble using additive optimization  |
+| XGBoost Regressor        | Efficient gradient boosting variant   |
+
+---
+
+### 5. 📈 Model Evaluation
+
+Models were benchmarked using the following metrics:
 
 \[
 \text{MAE} = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|
@@ -83,69 +100,85 @@ Each model was evaluated using:
 \text{RMSE} = \sqrt{\text{MSE}}
 \]
 \[
-R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2}
+R^2 = 1 - \frac{\sum (y_i - \hat{y}_i)^2}{\sum (y_i - \bar{y})^2}
 \]
 
-**Best performing model:** `Random Forest Regressor`  
-- High \( R^2 \) value (~0.89) indicating excellent prediction capability.
-- Lower MAE and RMSE compared to other models.
+These metrics were used to assess the predictive accuracy and generalization performance of each model.
 
 ---
 
-## 📈 Visualizations
+## 🧪 Results Summary
 
-- Heatmap for feature correlations
-- Boxplots for outlier detection
-- Actual vs. Predicted scatter plots
-- Feature importance graphs for tree-based models
+After hyperparameter tuning and cross-validation:
+
+- The **Random Forest Regressor** emerged as the best-performing model.
+- It achieved:
+  - **R² ≈ 0.89**
+  - **Low MAE and RMSE**, indicating minimal deviation from actual popularity scores.
+
+> Random Forests demonstrated superior robustness to outliers and captured complex nonlinear relationships in the dataset.
 
 ---
 
-## 🚀 Installation & Usage
+## 📊 Visual Analytics
 
-To run this project on Google Colab or locally:
+Visualizations included in the project:
+
+- Heatmaps for correlation analysis
+- Boxplots for distribution and outlier detection
+- Scatter plots: Actual vs. Predicted values
+- Bar plots for feature importances in tree-based models
+
+---
+
+## ⚙️ Installation & Usage
+
+### 🔗 GitHub
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/<your-username>/music-popularity-prediction.git
 cd music-popularity-prediction
-````
 
-Install dependencies:
+### 📦 Dependencies
+
+Install required Python libraries:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Or open the notebook directly in Google Colab for interactive execution.
+Or simply open the `.ipynb` file using **Google Colab** for direct execution without local setup.
 
 ---
 
-## 📌 Conclusion
+## 🧾 Conclusion
 
-* Musical features like `energy`, `danceability`, `loudness`, and `valence` significantly affect a song’s popularity.
-* Ensemble models like Random Forest and Gradient Boosting outperform basic linear models.
-* This model can be extended for real-world platforms like Spotify, Apple Music, etc., to forecast song performance.
-
----
-
-## 📚 Future Work
-
-* Incorporate lyrics or sentiment analysis
-* Predict popularity over time (time series)
-* Classify into popularity tiers (e.g., hit, average, flop)
+✅ The project demonstrates that **audio and musical features can serve as strong predictors** of song popularity using supervised regression approaches.
+✅ Ensemble models, particularly **Random Forest** and **Gradient Boosting**, deliver significantly higher accuracy compared to linear baselines.
 
 ---
 
-## ✍️ Author
+## 🔮 Future Work
 
-Karthik Raj
-Music Popularity Prediction — Machine Learning Project (2025)
+To enhance the predictive power and practical applicability:
 
----
-
-## 📜 License
-
-MIT License – see `LICENSE.md` for details.
+* Incorporate **natural language processing (NLP)** on lyrics
+* Model **temporal dynamics** (seasonality, release dates)
+* Convert to a **multi-class classification** model (e.g., Hit vs. Flop)
+* Integrate **real-time streaming metrics** from platforms like Spotify API
 
 ---
 
+## 👨‍💻 Author
+
+**Karthik Raj**
+*Machine Learning & Data Science Practitioner*
+**Project: Music Popularity Prediction | 2025**
+
+---
+
+## 🪪 License
+
+Distributed under the **MIT License**. See [`LICENSE.md`](./LICENSE.md) for full terms.
+
+---
